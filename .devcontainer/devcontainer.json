@@ -1,0 +1,46 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/anaconda
+{
+	"name": "Anaconda (Python 3)",
+	"build": { 
+		"context": "..",
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker": {},
+		"ghcr.io/devcontainers-contrib/features/poetry:2": {}
+	},
+	"containerEnv": {
+		"POETRY_VIRTUALENVS_IN_PROJECT": "true"
+	},
+	"mounts": [
+		{
+			"source": "${localWorkspaceFolder}/.lean",
+			"target": "/home/vscode/.lean",
+			"type": "bind"
+		}
+	],
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo chown -R vscode:vscode .lean",
+
+	// Configure tool-specific properties.
+	"customizations": {"vscode": {
+		"extensions": [
+			"GitHub.copilot",
+			"GitHub.copilot-labs",
+			"GitHub.vscode-pull-request-github",
+			"eamodio.gitlens",
+			"humao.rest-client"
+		]
+	}},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

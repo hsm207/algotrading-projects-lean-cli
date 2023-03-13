@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "algotrading-projecs-lean-cli"
+version = "0.1.0"
+description = ""
+authors = ["hsm207 <hsm207@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "algotrading_projecs_lean_cli"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+lean = "^1.0.145"
+ipykernel = "^6.21.3"
+quantconnect-stubs = "^15258"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+pytest = "^7.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

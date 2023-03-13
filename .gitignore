@@ -1,0 +1,7 @@
+lean.json
+data
+backtests
+*.pyc
+.idea
+config.json
+.lean
