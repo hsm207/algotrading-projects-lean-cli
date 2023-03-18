@@ -5,3 +5,4 @@ backtests
 .idea
 config.json
 .lean
+.venv
