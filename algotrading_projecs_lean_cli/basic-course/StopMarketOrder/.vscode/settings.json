@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/workspaces/algotrading-projects-lean-cli/.venv/bin/python",
+    "python.languageServer": "Pylance"
+}
