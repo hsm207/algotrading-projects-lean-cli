@@ -11,8 +11,8 @@ class SellAfterTime(QCAlgorithm):
 
     def OnData(self, data):
         """OnData event is the primary entry point for your algorithm. Each new data point will be pumped in here.
-            Arguments:
-                data: Slice object keyed by symbol containing the stock data
+        Arguments:
+            data: Slice object keyed by symbol containing the stock data
         """
         # buy SPY if not invested and want to invest
         if not self.Portfolio.Invested and self.invest:
@@ -20,7 +20,7 @@ class SellAfterTime(QCAlgorithm):
             self.Debug("Purchased SPY")
             # record the invested time
             self.invested_time = self.Time
-        
+
         # calculate the time difference between now and the invested time in days
         time_diff = (self.Time - self.invested_time).days
         # log it's been ... since you invested

@@ -5,6 +5,7 @@ class SellOnProfit(QCAlgorithm):
     """
     This algoritm buys AAPL and sells it when it reaches a 100% profit.
     """
+
     def Initialize(self):
         self.SetStartDate(2010, 1, 1)  # Set Start Date
         self.SetEndDate(2015, 1, 1)  # Set End Date
@@ -14,12 +15,12 @@ class SellOnProfit(QCAlgorithm):
         # Set to negative for target loss
         # e.g. -0.5 means 50% loss
         self.profit_percent_target = 1.0
-        self.invest = True # avoids keep buying and selling
+        self.invest = True  # avoids keep buying and selling
 
     def OnData(self, data):
         """OnData event is the primary entry point for your algorithm. Each new data point will be pumped in here.
-            Arguments:
-                data: Slice object keyed by symbol containing the stock data
+        Arguments:
+            data: Slice object keyed by symbol containing the stock data
         """
         if not self.Portfolio.Invested and self.invest:
             self.SetHoldings("AAPL", 1)

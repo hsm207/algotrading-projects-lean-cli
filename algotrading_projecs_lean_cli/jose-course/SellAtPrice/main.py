@@ -16,15 +16,15 @@ class SellAtPrice(QCAlgorithm):
 
     def OnData(self, data):
         """OnData event is the primary entry point for your algorithm. Each new data point will be pumped in here.
-            Arguments:
-                data: Slice object keyed by symbol containing the stock data
+        Arguments:
+            data: Slice object keyed by symbol containing the stock data
         """
         if not self.Portfolio.Invested and self.invest:
             self.SetHoldings("AAPL", 1)
             self.Debug("Purchased Stock")
-        
+
         # get apple's closing price and check if it's greater than the limit price
-        closing_price = self.Portfolio['AAPL'].Price
+        closing_price = self.Portfolio["AAPL"].Price
 
         # make sure you hold apple stock before selling
         if closing_price > self.limit_price and self.Portfolio.Invested:
