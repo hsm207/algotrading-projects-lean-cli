@@ -14,7 +14,7 @@ class OrderEvent(QCAlgorithm):
         self.stock = self.AddEquity("TSLA", Resolution.Daily)
 
         self.buy_toggle = True
-        self.sell_toggle = False
+        self.sell_toggle = True
 
         self.profit_target_percent = 0.1
 
@@ -28,7 +28,7 @@ class OrderEvent(QCAlgorithm):
         if not data[self.stock.Symbol]:
             return
         
-        if not self.Portfolio.invested and self.buy_toggle:
+        if not self.Portfolio.Invested and self.buy_toggle:
             purchase_quantity = self.Portfolio.Cash // data[self.stock.Symbol].Open
             self.MarketOrder(self.stock.Symbol, purchase_quantity)
             self.Debug(f"Bought {purchase_quantity} shares of {self.stock.Symbol}")
@@ -39,10 +39,11 @@ class OrderEvent(QCAlgorithm):
 
         if unrealized_profit > self.profit_target_percent and self.sell_toggle:
             self.MarketOrder(self.stock.Symbol, -self.Portfolio[self.stock.Symbol].Quantity)
-            self.Debug(f"Sold {self.stock.Symbol} for a {unrealized_profit * 100}% profit")
+            # log the unrealized profit in 2 decimal places
+            self.Debug(f"Sold {self.stock.Symbol} for a {unrealized_profit * 100:.2f}% profit")
             self.sell_toggle = False
         
-    def OnOrderEvent(self, orderEvent: QuantConnect.Orders.OrderEvent) -> None:
+    def OnOrderEvent(self, orderEvent):
         # this event is triggered when an order is filled
         # it's a good place to log the order event
         self.Debug(f"Order Event: {orderEvent}")
