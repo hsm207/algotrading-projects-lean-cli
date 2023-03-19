@@ -52,7 +52,7 @@ class ScheduleEvent(QCAlgorithm):
             self.Debug(
                 f"Not enough cash to buy {self.stock.Symbol} this month. Bringing forward ${self.monthly_purchase_target} to the next month."
             )
-            
+
         else:
             # figure out the number of shares we can buy
             shares_to_buy = self.current_monthly_allowance // self.stock.Open
@@ -64,7 +64,7 @@ class ScheduleEvent(QCAlgorithm):
             )
             # reset the current monthly allowance to the fixed dollar amount
             self.current_monthly_allowance = self.monthly_purchase_target
-    
+
     def OnOrderEvent(self, orderEvent):
         # log the cash balance after each order is filled
         if orderEvent.Status == OrderStatus.Filled:
