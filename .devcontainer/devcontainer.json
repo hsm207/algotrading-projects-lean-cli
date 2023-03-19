@@ -38,6 +38,7 @@
 			"GitHub.vscode-pull-request-github",
 			"eamodio.gitlens",
 			"humao.rest-client"
+			"ms-python.python"
 		]
 	}},
 
