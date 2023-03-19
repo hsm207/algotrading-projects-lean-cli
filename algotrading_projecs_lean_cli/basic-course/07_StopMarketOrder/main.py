@@ -32,12 +32,12 @@ class StopMarketOrder(QCAlgorithm):
 
         if not self.sell_ticket and self.Portfolio.Invested:
             stop_price = self.stock.Close * (1 - self.stop_loss_percent)
-            
+
             self.sell_ticket = self.StopMarketOrder(
                 self.stock.Symbol,
                 quantity=-self.Portfolio[self.stock.Symbol].Quantity,
                 stopPrice=stop_price,
-                tag=f"Stop Loss {self.stock.Symbol}"
+                tag=f"Stop Loss {self.stock.Symbol}",
             )
             self.Debug(
                 f"Stop Market Order for {self.stock.Symbol} placed at {stop_price}"
